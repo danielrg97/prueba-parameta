@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://www.parameta.com/controller/ws/gen" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.parameta.com/controller/ws/gen" targetNamespace="http://www.parameta.com/controller/ws/gen">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.parameta.com/controller/ws/gen">
+
+    <xs:element name="getEmpleadoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empleado" type="tns:empleado"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getEmpleadoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="empleado" type="tns:empleadoDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="empleado">
+        <xs:sequence>
+            <xs:element name="primerNombre" type="xs:string"/>
+            <xs:element name="segundoNombre" type="xs:string"/>
+            <xs:element name="primerApellido" type="xs:string"/>
+            <xs:element name="segundoApellido" type="xs:string"/>
+            <xs:element name="tipoDocumento" type="xs:string"/>
+            <xs:element name="numeroDocumento" type="xs:string"/>
+            <xs:element name="fechaNacimiento" type="xs:date"/>
+            <xs:element name="fechaVinculacion" type="xs:date"/>
+            <xs:element name="cargo" type="xs:string"/>
+            <xs:element name="salario" type="xs:long"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="empleadoDto">
+        <xs:sequence>
+            <xs:element name="empleado" type="tns:empleado"/>
+            <xs:element name="tiempoVinculacion" type="xs:string"/>
+            <xs:element name="edad" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getEmpleadoResponse">
+    <wsdl:part element="tns:getEmpleadoResponse" name="getEmpleadoResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmpleadoRequest">
+    <wsdl:part element="tns:getEmpleadoRequest" name="getEmpleadoRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EmpleadoPort">
+    <wsdl:operation name="getEmpleado">
+      <wsdl:input message="tns:getEmpleadoRequest" name="getEmpleadoRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getEmpleadoResponse" name="getEmpleadoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmpleadoPortSoap11" type="tns:EmpleadoPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getEmpleado">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getEmpleadoRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEmpleadoResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmpleadoPortService">
+    <wsdl:port binding="tns:EmpleadoPortSoap11" name="EmpleadoPortSoap11">
+      <soap:address location="http://localhost:8090/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
