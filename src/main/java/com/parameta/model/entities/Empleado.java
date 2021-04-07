@@ -1,5 +1,7 @@
 package com.parameta.model.entities;
 
+import com.parameta.utils.Constants;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -10,7 +12,7 @@ import javax.xml.bind.annotation.XmlType;
 import java.util.Date;
 
 @Entity
-@Table(name = "T01_EMPLEADO")
+@Table(name = Constants.TABLE_NAME)
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "empleado", propOrder = {
         "id",
@@ -28,56 +30,56 @@ import java.util.Date;
 public class Empleado {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name = "T01_ID")
+    @Column(name = Constants.TABLE_ID)
     @XmlElement(required = true)
     private Integer id;
 
-    @Column(name = "T01_NOMBRE1")
-    @NotBlank(message = "Nombre es obligatorio")
+    @Column(name = Constants.TABLE_FIRST_NAME)
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_FIRST_NAME)
     @XmlElement(required = true)
     private String primerNombre;
 
-    @Column(name = "T01_NOMBRE2")
+    @Column(name = Constants.TABLE_MIDDLE_NAME)
     @XmlElement(required = true)
     private String segundoNombre;
 
-    @Column(name = "T01_APELLIDO1")
-    @NotBlank(message = "Primer apellido es obligatorio")
+    @Column(name = Constants.TABLE_FIRST_LAST_NAME)
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_FIRST_LAST_NAME)
     @XmlElement(required = true)
     private String primerApellido;
 
-    @Column(name = "T01_APELLIDO2")
-    @NotBlank(message = "Segundo apellido es obligatorio")
+    @Column(name = Constants.TABLE_SECOND_LAST_NAME)
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_SECOND_LAST_NAME)
     @XmlElement(required = true)
     private String segundoApellido;
 
-    @Column(name = "T01_TIPO_DOCUMENTO")
-    @NotBlank(message = "Tipo de documento es obligatorio")
+    @Column(name = Constants.TABLE_DOC_TYPE)
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_DOC_TYPE)
     @XmlElement(required = true)
     private String tipoDocumento;
 
-    @Column(name = "T01_NUMERO_DOCUMENTO")
-    @NotBlank(message = "Numero de documento es obligatorio")
+    @Column(name = Constants.TABLE_DOC_NUM)
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_DOC_NUM)
     @XmlElement(required = true)
     private String numeroDocumento;
 
-    @Column(name = "T01_FECHA_NACIMIENTO")
-    @NotNull(message = "Fecha de documento es obligatorio")
+    @Column(name = Constants.TABLE_BIRTH_DATE)
+    @NotNull(message = Constants.ENTITY_EMPLEADO_NOT_NULL_BIRTH_DATE)
     @XmlElement(required = true)
     private Date fechaNacimiento;
 
-    @Column(name = "T01_FECHA_VINCULACION")
-    @NotNull(message = "Fecha de vinculacion en la empresa es obligatorio")
+    @Column(name = Constants.TABLE_VINCULATION_DATE)
+    @NotNull(message = Constants.ENTITY_EMPLEADO_NOT_NULL_VINCULATION_DATE)
     @XmlElement(required = true)
     private Date fechaVinculacion;
 
-    @Column(name = "T01_CARGO")
-    @NotBlank(message = "Cargo es obligatorio")
+    @Column(name = Constants.TABLE_POSITION)
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_POSITION)
     @XmlElement(required = true)
     private String cargo;
 
-    @Column(name = "T01_SALARIO")
-    @NotNull(message = "Salario es obligatorio")
+    @Column(name = Constants.TABLE_SALARY)
+    @NotNull(message = Constants.ENTITY_EMPLEADO_NOT_NULL_SALARY)
     @XmlElement(required = true)
     private Double salario;
 

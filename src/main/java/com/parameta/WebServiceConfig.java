@@ -1,6 +1,7 @@
 package com.parameta;
 
 
+import com.parameta.utils.Constants;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -22,21 +23,21 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(servlet, "/ws/*");
+        return new ServletRegistrationBean(servlet, Constants.SERVLET_REGISTRATION_BEAN_MAPPING);
     }
 
-    @Bean(name = "empleadosWsdl")
+    @Bean(name = Constants.WSDL_NAME)
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema countriesSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-        wsdl11Definition.setPortTypeName("EmpleadoPort");
-        wsdl11Definition.setLocationUri("/ws");
-        wsdl11Definition.setTargetNamespace("http://www.parameta.com/controller/ws/gen");
+        wsdl11Definition.setPortTypeName(Constants.WSDL_PORT_TYPE_NAME);
+        wsdl11Definition.setLocationUri(Constants.LOCATION_URI);
+        wsdl11Definition.setTargetNamespace(Constants.NAMESPACE_URI);
         wsdl11Definition.setSchema(countriesSchema);
         return wsdl11Definition;
     }
 
     @Bean
     public XsdSchema countriesSchema() {
-        return new SimpleXsdSchema(new ClassPathResource("Empleado.xsd"));
+        return new SimpleXsdSchema(new ClassPathResource(Constants.XSD_PATH));
     }
 }

@@ -1,5 +1,8 @@
 package com.parameta.model.entities;
 
+import com.parameta.utils.Constants;
+import org.apache.tomcat.util.bcel.Const;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -38,42 +41,42 @@ public class Empleado {
                 '}';
     }
 
-    @NotBlank(message = "Nombre es obligatorio")
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_FIRST_NAME)
     @XmlElement(required = true)
     private String primerNombre;
 
     @XmlElement(required = true)
     private String segundoNombre;
 
-    @NotBlank(message = "Primer apellido es obligatorio")
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_FIRST_LAST_NAME)
     @XmlElement(required = true)
     private String primerApellido;
 
-    @NotBlank(message = "Segundo apellido es obligatorio")
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_SECOND_LAST_NAME)
     @XmlElement(required = true)
     private String segundoApellido;
 
-    @NotBlank(message = "Tipo de documento es obligatorio")
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_DOC_TYPE)
     @XmlElement(required = true)
     private String tipoDocumento;
 
-    @NotBlank(message = "Numero de documento es obligatorio")
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_DOC_NUM)
     @XmlElement(required = true)
     private String numeroDocumento;
 
-    @NotNull(message = "Fecha de documento es obligatorio")
+    @NotNull(message = Constants.ENTITY_EMPLEADO_NOT_NULL_BIRTH_DATE)
     @XmlElement(required = true)
     private Date fechaNacimiento;
 
-    @NotNull(message = "Fecha de vinculacion en la empresa es obligatorio")
+    @NotNull(message = Constants.ENTITY_EMPLEADO_NOT_NULL_VINCULATION_DATE)
     @XmlElement(required = true)
     private Date fechaVinculacion;
 
-    @NotBlank(message = "Cargo es obligatorio")
+    @NotBlank(message = Constants.ENTITY_EMPLEADO_NOT_NULL_POSITION)
     @XmlElement(required = true)
     private String cargo;
 
-    @NotNull(message = "Salario es obligatorio")
+    @NotNull(message = Constants.ENTITY_EMPLEADO_NOT_NULL_SALARY)
     @XmlElement(required = true)
     private Double salario;
 

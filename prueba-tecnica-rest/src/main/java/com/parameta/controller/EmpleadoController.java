@@ -1,10 +1,10 @@
 package com.parameta.controller;
 
-import com.parameta.controller.ws.client.EmpleadoClient;
 import com.parameta.exceptions.AgeException;
 import com.parameta.model.entities.Empleado;
 
 import com.parameta.model.service.EmpleadoService;
+import com.parameta.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -25,7 +25,7 @@ public class EmpleadoController {
         this.empleadoService = empleadoService;
     }
 
-    @GetMapping("/get-empleado")
+    @GetMapping(Constants.ENDPOINT_GET_EMPLEADO)
     public @ResponseBody EmpleadoDto getEmpleado(@Valid @RequestBody Empleado empleado) throws AgeException {
         return empleadoService.getEmpleado(empleado);
     }
